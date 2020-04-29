@@ -3,6 +3,9 @@
 	"version": "0.0.0",
 	"description": "Test repo for Github Actions.",
 	"main": "index.js",
+	"scripts": {
+		"start": "ncc build action.js -o ."
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/jeffersonking/github-actions.git"
