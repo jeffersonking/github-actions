@@ -1,6 +1,7 @@
 const core = require('@actions/core')
 const {context, GitHub} = require('@actions/github')
 
+// https://help.github.com/en/actions/building-actions/creating-a-javascript-action#commit-and-push-your-action-to-github
 // repos/jeffersonking/github-actions/releases
 // repos/jeffersonking/github-actions/releases/25992490/assets
 async function run() {
