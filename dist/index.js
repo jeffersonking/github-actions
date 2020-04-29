@@ -10,6 +10,7 @@ async function run() {
 		console.log(11)
 		const {data: assets} = await github.repos.listAssetsForRelease({
 			owner: 'jeffersonking',
+			repo: 'github-actions',
 			release_id: 25992490,
 		})
 		console.log(22)
