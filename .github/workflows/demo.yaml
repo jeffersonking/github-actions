@@ -2,22 +2,20 @@ name: Demo
 on: push
 
 jobs:
-    package:
-        name: Package
-        runs-on: macos-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/upload-artifact@v1
-              with:
-                  name: Readme
-                  path: README.md
-            - uses: actions/create-release@latest
-              id: create_release
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                  tag_name: Latest
-                  release_name: Latest
-                  draft: false
-                  prerelease: true
-            - run: echo ${{ steps.create_release.outputs.upload_url }}
+  package:
+    name: Package
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Readme
+        path: README.md
+    - uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: https://uploads.github.com/repos/jeffersonking/github-actions/releases/25992490/assets{?name,label}
+        asset_path: ./README.md
+        asset_name: README.md
+        asset_content_type: text/markdown
