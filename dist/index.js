@@ -4,9 +4,14 @@ const {GitHub} = require('@actions/github')
 
 async function run() {
 	try {
+		console.log(00)
 		const github = new GitHub(process.env.GITHUB_TOKEN)
 
-		const {data: assets} = await github.repos.listAssetsForRelease({ release_id: 25992490 })
+		console.log(11)
+		const {data: assets} = await github.repos.listAssetsForRelease({
+			release_id: 25992490,
+		})
+		console.log(22)
 		for (const asset of assets) {
 			console.log(`Asset ${asset.id}`)
 		}
