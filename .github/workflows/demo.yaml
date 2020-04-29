@@ -17,5 +17,5 @@ jobs:
       with:
         upload_url: https://uploads.github.com/repos/jeffersonking/github-actions/releases/25992490/assets{?name,label}
         asset_path: ./README.md
-        asset_name: README.md
+        asset_name: README2.md
         asset_content_type: text/markdown
