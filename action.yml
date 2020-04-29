@@ -2,12 +2,9 @@ name: 'Delete all Release Assets'
 description: 'Delete all Release Assets.'
 author: 'Jeff King'
 inputs:
-  release_id:  # id of input
+  release_id:
     description: 'Release ID'
     required: true
 runs:
   using: 'node12'
-  main: 'dist/index.js'
-branding:
-  icon: 'package'
-  color: 'gray-dark'
+  main: 'index.js'
