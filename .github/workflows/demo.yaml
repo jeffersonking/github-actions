@@ -7,12 +7,12 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/upload-artifact@v1
-      with:
-        name: Readme
-        path: README.md
     - uses: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         release_id: 25992490
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Readme
+        path: README.md
