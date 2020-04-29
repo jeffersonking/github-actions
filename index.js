@@ -31,7 +31,7 @@ async function run() {
 				'content-length': fs.statSync(assetPath).size
 			},
 			name: assetName,
-			file: fs.readFileSync(assetPath)
+			data: fs.readFileSync(assetPath)
 		})
 	} catch (error) {
 		core.setFailed(error.message)
