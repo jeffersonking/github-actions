@@ -14,7 +14,9 @@ async function run() {
 		})
 
 		for (const asset of assets) {
-			await github.repos.deleteReleaseAsset({ asset_id: asset.id })
+			await github.repos.deleteReleaseAsset({
+				owner, repo, asset_id: asset.id
+			})
 		}
 	} catch (error) {
 		core.setFailed(error.message)
