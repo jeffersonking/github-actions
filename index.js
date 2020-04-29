@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const {context, GitHub} = require('@actions/github')
+const fs = require('fs')
 
 // https://help.github.com/en/actions/building-actions/creating-a-javascript-action#commit-and-push-your-action-to-github
 // repos/jeffersonking/github-actions/releases
@@ -9,6 +10,9 @@ async function run() {
 		const github = new GitHub(process.env.GITHUB_TOKEN)
 		const { owner, repo } = context.repo;
 		const release_id = core.getInput('release_id', { required: true })
+		const assetPath = core.getInput('asset_path', {required: true})
+		const assetName = core.getInput('asset_name', {required: true})
+		const assetContentType = core.getInput('asset_content_type', {required: true})
 
 		const {data: assets} = await github.repos.listAssetsForRelease({
 			owner, repo, release_id,
@@ -19,6 +23,16 @@ async function run() {
 				owner, repo, asset_id: asset.id
 			})
 		}
+
+		await github.repos.uploadReleaseAsset({
+			owner, repo, release_id,
+			headers: {
+				'content-type': assetContentType,
+				'content-length': fs.statSync(assetPath).size
+			},
+			name: assetName,
+			file: fs.readFileSync(assetPath)
+		})
 	} catch (error) {
 		core.setFailed(error.message)
 	}

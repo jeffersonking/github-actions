@@ -12,11 +12,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         release_id: 25992490
-    - uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: https://uploads.github.com/repos/jeffersonking/github-actions/releases/25992490/assets{?name,label}
         asset_path: ./README.md
         asset_name: README.md
         asset_content_type: text/markdown
