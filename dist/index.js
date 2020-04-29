@@ -15,6 +15,7 @@ async function run() {
 		})
 
 		for (const asset of assets) {
+			console.log(owner, repo, asset.id)
 			await github.repos.deleteReleaseAsset({
 				owner, repo, asset_id: asset.id
 			})
