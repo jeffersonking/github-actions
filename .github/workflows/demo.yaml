@@ -6,11 +6,20 @@ jobs:
         name: Package
         runs-on: macos-latest
         steps:
-            - uses: actions/checkout@v2 # $GITHUB_WORKSPACE
-            - run: |
-                  npm install
-                  ls -l
+            - uses: actions/checkout@v2
             - uses: actions/upload-artifact@v1
               with:
                   name: Readme
                   path: README.md
+            - uses: actions/create-release@latest
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+              with:
+                  tag_name: ${{ github.ref }}
+                  release_name: Release ${{ github.ref }}
+                  body: |
+                      Changes in this Release
+                      - First Change
+                      - Second Change
+                  draft: false
+                  prerelease: false
