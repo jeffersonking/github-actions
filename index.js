@@ -21,6 +21,9 @@ async function run() {
 			})
 		}
 
+		const res = await github.repos.getRelease({ owner, repo, release_id })
+		console.log(res)
+
 		const {upload_url} = await github.repos.getRelease({ owner, repo, release_id })
 		console.log(111, upload_url)
 		await github.repos.uploadReleaseAsset({
