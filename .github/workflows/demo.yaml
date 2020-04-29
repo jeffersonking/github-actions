@@ -4,14 +4,14 @@ on: push
 jobs:
     build:
         runs-on: macos-latest
+
+        # Because steps run in their own process, changes to environment variables are not preserved between steps.
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
             - uses: actions/checkout@v2
 
-            - name: Run a one-line script
-              run: echo Hello, world!
-
-            - name: Run a multi-line script
+            - name: Install and Package
               run: |
-                  echo Add other actions to build,
+                  echo Hello, world!
+                  ls -l
                   echo test, and deploy your project.
