@@ -1,0 +1,14 @@
+{
+	"name": "github-actions",
+	"version": "0.0.0",
+	"description": "Test repo for Github Actions.",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jeffersonking/github-actions.git"
+	},
+	"dependencies": {
+		"@actions/core": "1.2.3",
+		"@actions/github": "2.1.1"
+	}
+}
