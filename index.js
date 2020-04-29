@@ -14,18 +14,16 @@ async function run() {
 		const assetName = core.getInput('asset_name', {required: true})
 		const assetContentType = core.getInput('asset_content_type', {required: true})
 
-		const {data: assets} = await github.repos.listAssetsForRelease({
-			owner, repo, release_id,
-		})
-
+		const {data: assets} = await github.repos.listAssetsForRelease({ owner, repo, release_id })
 		for (const asset of assets) {
 			await github.repos.deleteReleaseAsset({
 				owner, repo, asset_id: asset.id
 			})
 		}
 
+		const {upload_url} = await github.repos.getRelease({ owner, repo, release_id })
 		await github.repos.uploadReleaseAsset({
-			owner, repo, release_id,
+			url: upload_url,
 			headers: {
 				'content-type': assetContentType,
 				'content-length': fs.statSync(assetPath).size
