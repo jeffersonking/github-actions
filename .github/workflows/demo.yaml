@@ -12,14 +12,12 @@ jobs:
                   name: Readme
                   path: README.md
             - uses: actions/create-release@latest
+              id: create_release
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   tag_name: ${{ github.ref }}
-                  release_name: Release ${{ github.ref }}
-                  body: |
-                      Changes in this Release
-                      - First Change
-                      - Second Change
+                  release_name: Latest
                   draft: false
-                  prerelease: false
+                  prerelease: true
+            - run: echo ${{ steps.create_release.outputs.upload_url }}
