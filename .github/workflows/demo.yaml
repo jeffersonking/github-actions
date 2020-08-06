@@ -1,12 +1,12 @@
-name: Upload Release Asset
+name: Create Pre-release
 on:
   push:
     branches:
       - master
 
 jobs:
-  createReleaseAndAsset:
-    name: Create Release and Asset
+  createPrerelease:
+    name: Create Pre-release
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
