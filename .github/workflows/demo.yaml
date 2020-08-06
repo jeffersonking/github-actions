@@ -1,17 +1,26 @@
-name: Demo
+name: Upload Release Asset
 on: push
 
 jobs:
-  package:
-    name: Package
+  uploadReleaseAsset:
+    name: Upload Release Asset
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./replaceAllReleaseAssets
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        release_id: 25992490
-        asset_path: ./README.md
-        asset_name: README.md
-        asset_content_type: text/markdown
+      - uses: actions/checkout@v2
+      - id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          prerelease: true
+      - id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./README.md
+          asset_name: README.md
+          asset_content_type: text/markdown
