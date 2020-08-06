@@ -5,8 +5,8 @@ on:
       - master
 
 jobs:
-  uploadReleaseAsset:
-    name: Upload Release Asset
+  createReleaseAndAsset:
+    name: Create Release and Asset
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
