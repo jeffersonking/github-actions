@@ -1107,7 +1107,7 @@ const { execFileSync } = __webpack_require__(129);
 const { readFileSync, writeFileSync } = __webpack_require__(747);
 const { parse } = __webpack_require__(30);
 
-const package = JSON.parse(readFileSync('../package.json', 'utf8'));
+const package = JSON.parse(readFileSync('../../package.json', 'utf8'));
 const packageVer = parse(package.version);
 
 let prerelease = 0; // Main was changed, or no prev version, restart prerelease from 0.
@@ -1132,7 +1132,7 @@ try {
 packageVer.prerelease = [ prerelease ];
 package.version = packageVer.format();
 console.log('Computed package version:', package.version);
-writeFileSync('../package.json', JSON.stringify(package, null, 4));
+writeFileSync('../../package.json', JSON.stringify(package, null, 4));
 
 
 /***/ }),
