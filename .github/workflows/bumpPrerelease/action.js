@@ -14,6 +14,8 @@ try {
 	console.log('-----');
 	execFileSync('git', ['fetch', '--depth=10', 'origin']);
 	console.log('-----');
+	execFileSync('git', ['fetch', '--tags']);
+	console.log('-----');
 	console.log(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
 	console.log('-----');
 	// `abbrev=0` finds the closest tagname without any suffix.
