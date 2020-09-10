@@ -647,7 +647,7 @@ const { parse } = __webpack_require__(828)
 
 async function run() {
 	try {
-		const package = JSON.parse(readFileSync('../package.json', 'utf8'))
+		const package = JSON.parse(readFileSync('./package.json', 'utf8'))
 		const packageVer = parse(package.version)
 
 		// We expect/want `git describe` to throw if HEAD has no tag.
@@ -660,7 +660,7 @@ async function run() {
 		
 		packageVer.prerelease = [ prerelease ]
 		package.version = packageVer.format()
-		writeFileSync('../package.out.json', JSON.stringify(package, null, 4))
+		writeFileSync('./package.json', JSON.stringify(package, null, 4))
 	} catch (error) {
 		core.setFailed(error.message)
 	}
