@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./bumpPrerelease
+      - uses: ./.github/workflows/bumpPrerelease
       - id: package_version
         uses: Saionaro/extract-package-version@v1.1.1
       - id: create_release
