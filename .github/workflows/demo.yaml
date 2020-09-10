@@ -10,6 +10,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - run: |
+        git rev-parse --is-shallow-repository
       - uses: ./.github/workflows/bumpPrerelease
       - id: package_version
         uses: Saionaro/extract-package-version@v1.1.1
