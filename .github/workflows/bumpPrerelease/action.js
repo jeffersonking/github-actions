@@ -6,7 +6,9 @@ const { execFileSync } = require('child_process');
 const { readFileSync, writeFileSync } = require('fs');
 const { parse } = require('semver');
 
-const package = JSON.parse(readFileSync('../../../package.json', 'utf8'));
+console.log('-----');
+execFileSync('ls');
+const package = JSON.parse(readFileSync('./package.json', 'utf8'));
 const packageVer = parse(package.version);
 
 let prerelease = 0; // Main was changed, or no prev version, restart prerelease from 0.
@@ -31,4 +33,4 @@ try {
 packageVer.prerelease = [ prerelease ];
 package.version = packageVer.format();
 console.log('Computed package version:', package.version);
-writeFileSync('../../../package.json', JSON.stringify(package, null, 4));
+writeFileSync('./package.json', JSON.stringify(package, null, 4));
