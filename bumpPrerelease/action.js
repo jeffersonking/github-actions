@@ -9,6 +9,8 @@ async function run() {
 		const packageVer = parse(package.version)
 
 		// `abbrev=0` finds the closest tagname without any suffix.
+		execFileSync('git', ['fetch', '--depth=10'])
+		execFileSync('git', ['fetch', '--tag'])
 		const tag = execFileSync('git', ['describe', '--tags', '--abbrev=0'], { encoding: 'utf8' }).trim()
 		const lastReleaseVer = parse(tag)
 		
