@@ -10,6 +10,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - run: | # fetch not working within bumpPrerelease.
+          git fetch --depth=10
+          git fetch --tags
       - uses: ./bumpPrerelease
       - id: package_version
         uses: Saionaro/extract-package-version@v1.1.1
