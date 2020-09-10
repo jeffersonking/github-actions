@@ -13,6 +13,7 @@ jobs:
         with:
           fetch-depth: 10 # Load 10 commits back for tags.
       - run: |
+          git fetch --tags
           git status
           git tag
       - uses: ./bumpPrerelease
