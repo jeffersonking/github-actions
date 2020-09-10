@@ -10,9 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 10 # Load 10 commits back for tags.
-      - run: |
+      - run: | # fetch tags not working within bumpPrerelease.
           git fetch --tags
       - uses: ./bumpPrerelease
       - id: package_version
