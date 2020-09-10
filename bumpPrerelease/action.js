@@ -18,6 +18,7 @@ async function run() {
 		
 		packageVer.prerelease = [ prerelease ]
 		package.version = packageVer.format()
+		console.log('Computed package version:', package.version)
 		writeFileSync('./package.json', JSON.stringify(package, null, 4))
 	} catch (error) {
 		core.setFailed(error.message)
