@@ -1107,19 +1107,17 @@ const { execFileSync } = __webpack_require__(129);
 const { readFileSync, writeFileSync } = __webpack_require__(747);
 const { parse } = __webpack_require__(30);
 
-console.log('ls-----');
-console.log(execFileSync('ls', { encoding: 'utf8' }))
 const package = JSON.parse(readFileSync('./package.json', 'utf8'));
 const packageVer = parse(package.version);
 
 let prerelease = 0; // Main was changed, or no prev version, restart prerelease from 0.
 try {
-	console.log('log-----');
-	console.log(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
 	console.log('-----');
 	execFileSync('git', ['fetch', '--depth=10']);
 	console.log('-----');
 	execFileSync('git', ['fetch', '--tags']);
+	console.log('-----');
+	console.log(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
 	console.log('-----');
 	// `abbrev=0` finds the closest tagname without any suffix.
 	// HEAD~1 assuming the latest commit hasn't been tagged by this Action yet.
