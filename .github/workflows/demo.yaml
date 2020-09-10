@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: | # fetch tags not working within bumpPrerelease.
+          git fetch --depth=10
           git fetch --tags
       - uses: ./bumpPrerelease
       - id: package_version
