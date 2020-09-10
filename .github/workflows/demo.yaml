@@ -10,8 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          npx json -I -f package.json -e 'this.version = `${this.version}-${{ github.run_number }}`'
+      - uses: ./bumpPrerelease
       - id: package_version
         uses: Saionaro/extract-package-version@v1.1.1
       - id: create_release

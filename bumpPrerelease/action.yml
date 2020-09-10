@@ -1,0 +1,6 @@
+name: 'Bump Prerelease'
+description: 'Bump Prerelease.'
+author: 'Jeff King'
+runs:
+  using: 'node12'
+  main: 'index.js'
