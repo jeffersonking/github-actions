@@ -650,8 +650,8 @@ async function run() {
 		const package = JSON.parse(readFileSync('./package.json', 'utf8'))
 		const packageVer = parse(package.version)
 
-		// We expect/want `git describe` to throw if HEAD has no tag.
-		const tag = execFileSync('git', ['describe', '--tags', '--exact-match'], { encoding: 'utf8' }).trim()
+		// `abbrev=0` finds the closest tagname without any suffix.
+		const tag = execFileSync('git', ['describe', '--tags', '--abbrev=0'], { encoding: 'utf8' }).trim()
 		const lastReleaseVer = parse(tag)
 		
 		const prerelease = packageVer.compareMain(lastReleaseVer) === 0
