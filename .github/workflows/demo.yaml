@@ -10,8 +10,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: microsoft/sarif-vscode-extension
+        # with:
+        #   repository: microsoft/sarif-vscode-extension
           # fetch-depth: 10
       - run: git log origin/master --oneline
       - run: git log --oneline
