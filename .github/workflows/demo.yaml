@@ -10,12 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-        # with:
-        #   repository: microsoft/sarif-vscode-extension
-          # fetch-depth: 10
-      - run: git log origin/master --oneline
-      - run: git log --oneline
-      - run: git fetch --depth=10 origin
-      - run: git log origin/master --oneline
-      - run: git log --oneline
-      # - uses: ./.github/workflows/bumpPrerelease
+        with:
+          repository: microsoft/sarif-vscode-extension
+          fetch-depth: 10
+      - uses: ./.github/workflows/bumpPrerelease
