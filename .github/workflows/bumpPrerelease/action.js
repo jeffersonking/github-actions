@@ -16,7 +16,7 @@ try {
 	execFileSync('git', ['fetch', '--tags']);
 	core.endGroup()
 
-	core.startGroup('Looking for tags from the following commits')
+	core.startGroup('Looking for tags from commits history')
 	core.info(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
 	// `abbrev=0` finds the closest tagname without any suffix.
 	// HEAD~1 assuming the latest commit hasn't been tagged by this Action yet.
