@@ -1112,8 +1112,6 @@ const packageVer = parse(package.version);
 
 let prerelease = 0; // Main was changed, or no prev version, restart prerelease from 0.
 try {
-	console.log('----- 1');
-	console.log(execFileSync('git', ['fetch', '--depth=10', 'origin'], { encoding: 'utf8' }));
 	console.log('----- 2');
 	console.log(execFileSync('git', ['fetch', '--tags'], { encoding: 'utf8' }));
 	console.log('----- 3');
