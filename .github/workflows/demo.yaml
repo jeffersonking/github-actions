@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: microsoft/sarif-vscode-extension
+          # repository: microsoft/sarif-vscode-extension
           # fetch-depth: 10
       - run: git log --oneline
       - run: git fetch --depth=10 origin
