@@ -12,6 +12,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: microsoft/sarif-vscode-extension
-          fetch-depth: 10
+          # fetch-depth: 10
       - run: git log --oneline
       - uses: ./.github/workflows/bumpPrerelease
