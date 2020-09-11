@@ -14,6 +14,6 @@ jobs:
           repository: microsoft/sarif-vscode-extension
           # fetch-depth: 10
       - run: git log --oneline
-      - run: git fetch --depth=10
+      - run: git fetch --depth=10 origin
       - run: git log --oneline
       # - uses: ./.github/workflows/bumpPrerelease
