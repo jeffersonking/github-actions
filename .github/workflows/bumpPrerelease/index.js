@@ -1162,7 +1162,7 @@ try {
 	core.endGroup();
 
 	core.startGroup('Looking for tags from commit history');
-	console.log(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
+	core.info(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
 	// `abbrev=0` finds the closest tagname without any suffix.
 	// HEAD~1 assuming the latest commit hasn't been tagged by this Action yet.
 	const tag = execFileSync('git', ['describe', '--tags', '--abbrev=0', 'HEAD~1'], { encoding: 'utf8' }).trim();
