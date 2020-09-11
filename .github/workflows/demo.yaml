@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 10
+          fetch-depth: 30
       - uses: ./.github/workflows/bumpPrerelease
       # - id: package_version
       #   uses: Saionaro/extract-package-version@v1.1.1
