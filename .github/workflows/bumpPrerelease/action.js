@@ -3,6 +3,7 @@
 
 // Run `ncc build action.js --out .` to produce `index.js`
 const { execFileSync } = require('child_process');
+const { setOutput } = require("@actions/core");
 const { readFileSync, writeFileSync } = require('fs');
 const { parse } = require('semver');
 
@@ -30,3 +31,4 @@ packageVer.prerelease = [ prerelease ];
 package.version = packageVer.format();
 console.log('Computed package version:', package.version);
 writeFileSync('./package.json', JSON.stringify(package, null, 4));
+setOutput("version", package.version);
