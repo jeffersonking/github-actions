@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 10
+          fetch-depth: 30
       - id: bumpPrerelease
         uses: ./.github/workflows/bumpPrerelease
       - id: create_release
