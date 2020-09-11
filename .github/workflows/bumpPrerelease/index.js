@@ -1148,7 +1148,7 @@ module.exports = toComparators
 
 // Run `ncc build action.js --out .` to produce `index.js`
 const { execFileSync } = __webpack_require__(129);
-const { setOutput } = __webpack_require__(718);
+const core = __webpack_require__(718);
 const { readFileSync, writeFileSync } = __webpack_require__(747);
 const { parse } = __webpack_require__(30);
 
@@ -1157,11 +1157,12 @@ const packageVer = parse(package.version);
 
 let prerelease = 0; // Main was changed, or no prev version, restart prerelease from 0.
 try {
-	console.log('----- 1');
+	core.startGroup('Fetching tags')
 	execFileSync('git', ['fetch', '--tags']);
-	console.log('----- 2');
-	console.log(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
-	console.log('----- 3');
+	core.endGroup()
+
+	core.startGroup('Looking for tags from the following commits')
+	core.info(execFileSync('git', ['log', '--oneline'], { encoding: 'utf8' }));
 	// `abbrev=0` finds the closest tagname without any suffix.
 	// HEAD~1 assuming the latest commit hasn't been tagged by this Action yet.
 	const tag = execFileSync('git', ['describe', '--tags', '--abbrev=0', 'HEAD~1'], { encoding: 'utf8' }).trim();
@@ -1169,14 +1170,15 @@ try {
 	if (packageVer.compareMain(lastReleaseVer) === 0) {
 		prerelease = lastReleaseVer.prerelease[0] + 1; // Main is equal, auto-increment the prerelease.
 	}
+	core.endGroup()
 } catch (error) {
 }
 
 packageVer.prerelease = [ prerelease ];
 package.version = packageVer.format();
-console.log('Computed package version:', package.version);
+core.info(`Computed package version: ${package.version}`);
 writeFileSync('./package.json', JSON.stringify(package, null, 4));
-setOutput("version", package.version);
+core.setOutput("version", package.version);
 
 
 /***/ }),
