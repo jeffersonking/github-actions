@@ -5,7 +5,7 @@ on:
       tag:
         description: 'Tag'     
         required: true
-        default: 'warning'
+        default: '0.0.0-x'
 
 jobs:
   createPrerelease:
